@@ -7,16 +7,16 @@ import {AccessTime} from "@mui/icons-material";
 import Rating from '@mui/material/Rating';
 import {createTheme, ThemeProvider} from "@mui/material";
 
-
+//de esta forma creamos un objeto con estilo compatible con themeprovider.
 const theme = createTheme({
-    components:{
+    components: {
         MuiTypography: {
             variants: [
                 {
                     props: {
                         variants: "body2",
                     },
-                    style:{
+                    style: {
                         fontSize: 11,
                     },
                 },
@@ -24,7 +24,7 @@ const theme = createTheme({
                     props: {
                         variants: "body3",
                     },
-                    style:{
+                    style: {
                         fontSize: 9,
                     },
                 },
@@ -32,51 +32,54 @@ const theme = createTheme({
             ],
         },
     },
-    });
+});
 
-export default function TourCard({tour}){
-
-
+export default function TourCard({tour}) {
 
 
-    return(
+    return (
 
-      <Grid item xs={3}>
-          <ThemeProvider theme={theme}>
-          <Paper elevation={3}>
-              <img src={tour.image} alt="" className="img"/>
-              <Box paddingX={1}>
-                  <Typography variant="subtitle1" component="h2">
-                      {tour.name}
-              </Typography>
-              </Box>
-              <Box sx={{
-                  display: "flex",
-                  alignItems: "center",
-              }}>
+        <Grid item xs={3}>
+            {/*Con themeprovider podemos aplicar los estilos especificados a todos los componentes que sean especificados
+            dentro de themeprovider.*/}
+            <ThemeProvider theme={theme}>
+                <Paper elevation={3}>
+                    <img src={tour.image} alt="" className="img"/>
+                    <Box paddingX={1}>
+                        <Typography variant="subtitle1" component="h2">
+                            {tour.name}
+                        </Typography>
+                    </Box>
+                    <Box sx={{
+                        display: "flex",
+                        alignItems: "center",
+                    }}>
 
-                  <AccessTime sx={{ width: 12.5 }}/>
-                  <Typography variant="body2" component="p" marginLeft={0.5}>{tour.duration} hours</Typography>
+                        {/*AccessTime es un icono de un reloj.*/}
+                        <AccessTime sx={{width: 12.5}}/>
+                        <Typography variant="body2" component="p" marginLeft={0.5}>{tour.duration} hours</Typography>
 
-              </Box>
-              <Box sx={{
-                  display: "flex",
-                  alignItems: "center",
-              }}
-              marginTop={3}>
+                    </Box>
+                    <Box sx={{
+                        display: "flex",
+                        alignItems: "center",
+                    }}
+                         marginTop={3}>
 
-              <Rating name="read-only" value={tour.rating} readOnly precision={0.25} size="small"/>
-                  <Typography variant="body2" component="p" marginLeft={0.5}>{tour.rating}</Typography>
-                  <Typography variant="body3" component="p" marginLeft={1.5}>({tour.numberOfReviews} reviews)</Typography>
-              </Box>
+                        {/* El componente Rating son estrellas animadas para valoracion.*/}
+                        <Rating name="read-only" value={tour.rating} readOnly precision={0.25} size="small"/>
+                        <Typography variant="body2" component="p" marginLeft={0.5}>{tour.rating}</Typography>
+                        <Typography variant="body3" component="p"
+                                    marginLeft={1.5}>({tour.numberOfReviews} reviews)</Typography>
+                    </Box>
 
-              <Box>
-                  <Typography variant="h6" component="h3" marginLeft={0}>From C $147</Typography>
-              </Box>
+                    <Box>
+                        <Typography variant="h6" component="h3" marginLeft={0}>From C $147</Typography>
+                    </Box>
 
-          </Paper>
-              </ThemeProvider>
-      </Grid>
+                </Paper>
+            </ThemeProvider>
+        </Grid>
 
     );
 }

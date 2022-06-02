@@ -16,7 +16,7 @@ export default function Home() {
 
         <div className="App">
 
-            {/*<SearchAppBar/>*/}
+
           <Container sx={{marginY: 5}}>
                 {cities.map((city, index) => (
                     <div key={index}>

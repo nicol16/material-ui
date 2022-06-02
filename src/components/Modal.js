@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import StaticDateRangePickerDemo from "./DatePicker";
+import Message from "./Message";
 
 const style = {
     position: "absolute",
@@ -18,21 +18,25 @@ const style = {
 };
 
 export default function BasicModal() {
+
     const [open, setOpen] = React.useState(false);
+
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
     return (
         <div>
             <Button onClick={handleOpen}>Book now</Button>
+            {/*Modal y dialog es lo mismo.*/}
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
+                {/*para dar estilo tambien podemos utilizar sx, es casi lo mismo que utilizar style.*/}
                 <Box sx={style}>
-                    <StaticDateRangePickerDemo/>
+                    <Message/>
                 </Box>
             </Modal>
         </div>
