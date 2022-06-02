@@ -11,7 +11,6 @@ import {Typography} from "@mui/material";
 export default function Message() {
 
 
-
     return (
        <Paper>
            <Typography>
